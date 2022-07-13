@@ -28,47 +28,24 @@ public class PostController {
 
 
     public void getById(long id, HttpServletResponse response) throws IOException {
-
-        try {
             final var data = service.getById(id);
             response.setContentType(APPLICATION_JSON);
             final var gson = new Gson();
             response.getWriter().print(gson.toJson(data));
-
-        } catch (NotFoundException e) {
-            response.getWriter().print("Post not found {id:" + id + "}");
-            e.printStackTrace();
-        }
-
     }
 
     public void save(Reader body, HttpServletResponse response) throws IOException {
-
-        try {
             response.setContentType(APPLICATION_JSON);
             final var gson = new Gson();
             final var post = gson.fromJson(body, Post.class);
             final var data = service.save(post);
             response.getWriter().print(gson.toJson(data));
-
-        } catch (NotFoundException e) {
-            response.getWriter().print("Post not saved");
-            e.printStackTrace();
-        }
     }
 
 
     public void removeById(long id, HttpServletResponse response) throws IOException {
-
-        try {
-            service.removeById(id);
+         service.removeById(id);
             response.getWriter().print("Post with id#" + id + " deleted successful");
-
-        } catch (NotFoundException e) {
-            response.getWriter().print("Post not found {id:" + id + "}.Please check the id and try again.");
-            e.printStackTrace();
-        }
-
-
     }
+
 }
