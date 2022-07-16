@@ -48,6 +48,8 @@
 
 Встраивание webapp-runner'а в ваш проект позволяет запускать его (проект) следующим образом: `java -jar target/dependency/webapp-runner.jar target/<appname>.war` (достаточно удобно для размещения на облачных платформах).
 
+*** java -jar target/dependency/webapp-runner.jar target/servlets-1.0-SNAPSHOT.war
+
 ### Задача
 
 Добавьте в свою сборку скачивание `webapp-runner`'а согласно [инструкции](https://github.com/heroku/webapp-runner#using-with-maven-in-your-project).
